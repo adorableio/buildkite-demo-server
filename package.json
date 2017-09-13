@@ -1,0 +1,25 @@
+{
+  "name": "base-react-app",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "test": "itg-react-scripts test"
+  },
+  "devDependencies": {
+    "eslint-config-adorable": "^0.0.5",
+    "jest": "^20.0.4"
+  },
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "adorable"
+    ],
+    "rules": {
+      "no-console": "warn"
+    }
+  }
+}
