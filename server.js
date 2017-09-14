@@ -1,14 +1,12 @@
 /* eslint-disable no-console */
 var path = require('path');
 var express = require('express');
+var cors = require('cors');
 var exec = require('child_process').execSync;
 
 var app = express();
 
-var staticPath = path.resolve(__dirname, 'build');
-
-// static assets
-app.use(express.static(staticPath));
+app.use(cors());
 
 // productionCallback() is used, if we are running within an NGINX environment
 /* eslint-disable no-unused-vars */
@@ -26,8 +24,7 @@ function developmentCallback () {
 var appListenPort = process.env.PORT || 3002;
 var appListenCallback = developmentCallback;
 
-app.get('*', function (req, res) {
-  res.sendFile(staticPath + '/index.html');
-});
+var { indexHandler } = require('./routes');
+app.get('/index', indexHandler);
 
 app.listen(appListenPort, appListenCallback);
